@@ -1,0 +1,1606 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>xTranslator — Русскоязычный мануал</title>
+  <style>
+/* xTranslator Russian Manual — unified dark theme */
+
+:root {
+  --bg: #1e1e2f;
+  --bg-soft: #26263a;
+  --card: #2b2b33;
+  --card-2: #2c2c3c;
+  --border: #444;
+  --border-accent: #ff5722;
+  --text: #e0e0e0;
+  --text-muted: #b0b0b0;
+  --accent: #ff9800;
+  --accent-light: #ffb74d;
+  --accent-soft: #ffcc80;
+  --link: #90caf9;
+  --code-bg: #1a1a2e;
+  --code-text: #ffeb3b;
+  --kbd-bg: #3a3a4a;
+  --kbd-border: #555;
+  --important-bg: #3b2f1f;
+  --important-border: #ff9800;
+  --warning-bg: #7f1d1d;
+  --warning-border: #c62828;
+  --faq-bg: #202538;
+  --faq-border: #1769aa;
+  --ok-bg: #1b3a1b;
+  --ok-border: #2e7d32;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  background-color: var(--bg);
+  color: var(--text);
+}
+
+a {
+  color: var(--link);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--accent-light);
+  text-decoration: underline;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Site header */
+.site-header {
+  background: var(--card-2);
+  border-bottom: 2px solid var(--border-accent);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+}
+
+.brand {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.brand a {
+  color: var(--accent-light);
+}
+
+.main-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.main-nav a {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 6px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-size: 14px;
+}
+
+.main-nav a:hover {
+  background: var(--important-bg);
+  border-color: var(--accent);
+  color: var(--accent-light);
+  text-decoration: none;
+}
+
+.main-nav a.active,
+.main-nav a.active:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #1e1e2f;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: default;
+}
+
+/* Page layout */
+.page-wrap {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 24px;
+  padding-top: 24px;
+  padding-bottom: 40px;
+}
+
+.page-toc {
+  background: var(--faq-bg);
+  border: 1px solid var(--faq-border);
+  border-radius: 8px;
+  padding: 14px 16px;
+  font-size: 14px;
+}
+
+.page-toc.sticky {
+  position: sticky;
+  top: 80px;
+  align-self: start;
+  max-height: calc(100vh - 100px);
+  overflow-y: auto;
+}
+
+@media (max-width: 900px) {
+  .page-wrap { grid-template-columns: 1fr; }
+  .page-toc.sticky { position: static; }
+}
+
+.page-toc h2 {
+  margin: 0 0 10px;
+  font-size: 16px;
+  color: var(--accent-light);
+  border-bottom: 1px solid var(--border-accent);
+  padding-bottom: 6px;
+}
+
+.page-toc ul {
+  margin: 0;
+  padding-left: 16px;
+  list-style: none;
+}
+
+.page-toc li {
+  margin: 5px 0;
+}
+
+.page-toc a {
+  color: var(--text-muted);
+}
+
+.page-toc a:hover { color: var(--accent-light); }
+
+/* Main content cards */
+main {
+  min-width: 0;
+}
+
+.card, section {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 18px 22px;
+  margin-bottom: 20px;
+}
+
+section h2 {
+  margin-top: 0;
+  color: var(--accent-light);
+  font-size: 22px;
+  border-bottom: 2px solid var(--border-accent);
+  padding-bottom: 8px;
+  margin-bottom: 14px;
+}
+
+section h3 {
+  color: var(--accent-soft);
+  font-size: 18px;
+  margin-top: 22px;
+  margin-bottom: 10px;
+}
+
+section h4 {
+  color: var(--text);
+  font-size: 16px;
+  margin-top: 16px;
+  margin-bottom: 8px;
+}
+
+.lead {
+  font-size: 17px;
+  color: var(--text);
+}
+
+p { margin: 10px 0; }
+
+ul, ol { margin: 10px 0; padding-left: 24px; }
+
+li { margin: 5px 0; }
+
+/* Hero / home */
+.hero {
+  background: linear-gradient(135deg, var(--card-2), var(--card));
+  border: 2px solid var(--border-accent);
+  border-radius: 12px;
+  padding: 28px 32px;
+  margin-top: 24px;
+  margin-bottom: 24px;
+}
+
+.hero h1 {
+  margin: 0 0 10px;
+  font-size: 32px;
+  color: var(--accent-light);
+}
+
+.hero p {
+  margin: 6px 0;
+  color: var(--text-muted);
+  font-size: 17px;
+}
+
+/* Cards grid on home */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.nav-card {
+  display: block;
+  background: var(--card-2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 18px;
+  color: var(--text);
+  transition: transform .15s, border-color .15s;
+}
+
+.nav-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--accent);
+  text-decoration: none;
+  color: var(--text);
+}
+
+.nav-card h3 {
+  margin: 0 0 8px;
+  color: var(--accent-light);
+  font-size: 18px;
+}
+
+.nav-card p {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+/* Utility boxes */
+.box {
+  border-radius: 6px;
+  padding: 12px 14px;
+  margin: 14px 0;
+}
+
+.important {
+  background: var(--important-bg);
+  border-left: 4px solid var(--important-border);
+  color: #ffe0b2;
+}
+
+.warning-box {
+  background: var(--warning-bg);
+  border: 1px solid var(--warning-border);
+  color: #ffebee;
+}
+
+.faq-box {
+  background: var(--faq-bg);
+  border: 1px solid var(--faq-border);
+  color: var(--text);
+}
+
+.ok-box {
+  background: var(--ok-bg);
+  border-left: 4px solid var(--ok-border);
+  color: #e8f5e9;
+}
+
+.box h3, .faq-box h3 {
+  margin: 0 0 8px;
+  color: var(--accent-light);
+  font-size: 16px;
+}
+
+.warning-box strong { color: #ffeb3b; }
+
+/* Code and kbd */
+code {
+  font-family: Consolas, "Courier New", monospace;
+  font-size: 14px;
+  background: var(--code-bg);
+  color: var(--code-text);
+  padding: 2px 5px;
+  border-radius: 4px;
+  word-break: break-word;
+}
+
+kbd {
+  display: inline-block;
+  font-family: Consolas, "Courier New", monospace;
+  font-size: 13px;
+  background: var(--kbd-bg);
+  color: var(--text);
+  border: 1px solid var(--kbd-border);
+  border-bottom-width: 3px;
+  border-radius: 5px;
+  padding: 3px 7px;
+  margin: 0 2px;
+  white-space: nowrap;
+}
+
+pre {
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 12px;
+  overflow-x: auto;
+  font-family: Consolas, "Courier New", monospace;
+  font-size: 14px;
+  color: var(--text);
+}
+
+pre code {
+  background: transparent;
+  color: inherit;
+  padding: 0;
+}
+
+/* Tables */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 14px 0;
+  font-size: 15px;
+}
+
+th, td {
+  border: 1px solid var(--border);
+  padding: 8px 10px;
+  text-align: left;
+  vertical-align: top;
+}
+
+th {
+  background: var(--card-2);
+  color: var(--accent-light);
+  font-weight: 600;
+}
+
+tr:nth-child(even) td { background: rgba(255,255,255,0.03); }
+
+/* Flag badges */
+.badge {
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: 5px;
+  font-weight: 600;
+  font-size: 13px;
+  margin-right: 6px;
+}
+
+.badge-white { background: #fff; color: #1a1a1a; border: 1px solid #ccc; }
+.badge-blue { background: #3498db; color: #fff; }
+.badge-purple { background: #9b59b6; color: #fff; }
+.badge-green { background: #27ae60; color: #fff; }
+.badge-red { background: #e74c3c; color: #fff; }
+.badge-yellow { background: #f1c40f; color: #1a1a1a; }
+
+/* Screenshots */
+.screenshot {
+  margin: 18px 0;
+  text-align: center;
+}
+
+.screenshot img {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, .35);
+  background: #111;
+}
+
+.screenshot figcaption {
+  margin-top: 8px;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+/* Version history */
+.version {
+  background: var(--bg-soft);
+  border: 1px solid #3f3f55;
+  border-radius: 8px;
+  padding: 12px 14px;
+  margin: 10px 0;
+}
+
+.version strong { color: var(--accent-soft); }
+
+.version ul { margin: 6px 0 0; padding-left: 20px; }
+
+.version li { margin: 3px 0; font-size: 14px; }
+
+/* Component / link lists */
+.link-list { margin: 0; padding-left: 20px; }
+
+.link-list li { margin: 5px 0; }
+
+/* Footer */
+.site-footer {
+  background: var(--card-2);
+  border-top: 2px solid var(--border-accent);
+  padding: 20px 0;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+.site-footer a { color: var(--accent-light); }
+
+.site-footer p { margin: 4px 0; }
+
+/* Online translators / links section */
+.links-section {
+  background: var(--faq-bg);
+  border: 1px solid var(--faq-border);
+  border-radius: 8px;
+  padding: 16px 18px;
+}
+
+.links-section h3 {
+  margin: 0 0 10px;
+  color: var(--accent-light);
+}
+
+.links-section ul { margin: 0; padding-left: 20px; }
+
+/* Inline helpers */
+.nickname { font-weight: bold; color: var(--accent); }
+
+.divider {
+  border: 0;
+  height: 2px;
+  background: #3f51b5;
+  margin: 28px 0;
+}
+
+.text-muted { color: var(--text-muted); }
+
+/* Scrollbar nicety */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: #444; border-radius: 5px; }
+::-webkit-scrollbar-thumb:hover { background: #555; }
+
+/* Offset for anchor jumps so the sticky header does not cover targets */
+section[id], h2[id], h3[id], div[id] {
+  scroll-margin-top: 110px;
+}
+
+/* Tabbed single-page layout.
+   Sections stay visible by default (no-JS fallback); only when the
+   script marks <html> with .js-tabs are inactive panels hidden. */
+section.tab-panel {
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+  margin-bottom: 0;
+}
+
+html.js-tabs section.tab-panel { display: none; }
+
+html.js-tabs section.tab-panel.active { display: block; }
+  </style>
+</head>
+<body>
+<header class="site-header">
+  <div class="container header-inner">
+    <div class="brand"><a href="#home">xTranslator</a></div>
+    <nav class="main-nav" id="tabs" aria-label="Разделы мануала">
+      <a href="#home" class="active" aria-current="true">Главная</a>
+      <a href="#manual">Мануал</a>
+      <a href="#tutorial">Туториал</a>
+      <a href="#glossary">Глоссарий</a>
+      <a href="#hotkeys">Горячие клавиши</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+  </div>
+</header>
+
+<div class="container">
+
+  <section id="home" class="tab-panel active">
+    <div class="hero">
+      <h1>xTranslator — инструмент перевода модов</h1>
+      <p>Skyrim / Skyrim SE / Starfield / Fallout 4 / Fallout 76 / Fallout: New Vegas</p>
+      <p class="lead">Единый редактор строк, диалогов, скриптов и интерфейсных текстов для локализации модов Bethesda. От первых шагов до публикации перевода.</p>
+    </div>
+
+    <div class="cards-grid">
+      <a class="nav-card" href="#manual">
+        <h3>📑 Полный мануал</h3>
+        <p>О программе, режимы редактирования, возможности, настройка API перевода, компоненты и история версий.</p>
+      </a>
+      <a class="nav-card" href="#tutorial">
+        <h3>🎓 Пошаговый туториал</h3>
+        <p>Построение словаря, режимы ESP/STRINGS, флаги строк, рабочий процесс и типичные ошибки; руководства: RegEx, VMAD, сравнение ESP, DefUI, пакетная обработка, орфография, карта NPC.</p>
+      </a>
+      <a class="nav-card" href="#faq">
+        <h3>❓ FAQ</h3>
+        <p>Ответы на частые вопросы о работе xTranslator и полный список ссылок на оригинальные статьи Nexus Mods.</p>
+      </a>
+      <a class="nav-card" href="#glossary">
+        <h3>📚 Справочник переводчика</h3>
+        <p>Глоссарий терминов, таблица «что нельзя переводить», чек-лист перед публикацией.</p>
+      </a>
+      <a class="nav-card" href="#hotkeys">
+        <h3>⌨️ Горячие клавиши и приёмы</h3>
+        <p>Таблица горячих клавиш и полезные приёмы работы в программе.</p>
+      </a>
+    </div>
+
+    <section>
+      <h2>⚠️ Важно с самого начала</h2>
+      <div class="important">
+        xTranslator не делает делокализацию / локализацию <code>.esp</code>/<code>.esm</code> — для этого используйте <strong>xEdit</strong>; VMAD переводится только осознанно. Подробные предупреждения — в <a href="#warnings">мануале</a>.
+      </div>
+    </section>
+
+    <section>
+      <h2>🌐 Онлайн-переводчики и полезные ссылки</h2>
+      <div class="links-section">
+        <h3>Поддерживаемые API перевода</h3>
+        <ul>
+          <li><a href="https://www.deepl.com/translator">DeepL Translator</a></li>
+          <li><a href="https://translate.google.com/">Google Translate</a></li>
+          <li><a href="http://www.bing.com/translator">Microsoft Translator (Azure/Bing)</a></li>
+          <li><a href="https://api.openai.com/">OpenAI API</a> / <a href="https://aitunnel.ru/">AiTunnel</a> / <a href="https://gptunnel.ru/">GPTunnel</a></li>
+          <li><a href="https://lmstudio.ai/download">LM Studio</a> (локальные модели)</li>
+          <li><a href="https://ollama.com/">Ollama</a> (локальные LLM)</li>
+          <li><a href="https://translate.youdao.com/">Youdao</a>, <a href="https://www.baiduinenglish.com/">Baidu</a></li>
+        </ul>
+      </div>
+      <div class="links-section" style="margin-top:16px;">
+        <h3>Статьи и ресурсы на Nexus Mods (справочно)</h3>
+        <ul>
+          <li><a href="https://www.nexusmods.com/fallout4/mods/3742">Champollion для Fallout 4</a></li>
+          <li><a href="https://www.nexusmods.com/skyrim/mods/35307/">Champollion для Skyrim/SSE</a></li>
+          <li><a href="https://www.nexusmods.com/starfield/mods/313">Страница xTranslator на Nexus (Starfield)</a></li>
+        </ul>
+        <p class="text-muted">Полный список статей и FAQ — на странице <a href="#faq">FAQ</a>.</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>👤 Кредиты</h2>
+      <ul>
+        <li><strong>Автор программы:</strong> <a href="https://next.nexusmods.com/profile/mcguffin">mcguffin</a> (Nexus Mods)</li>
+        <li><strong>Адаптация документации и русский перевод:</strong> <a href="https://www.nexusmods.com/starfield/mods/15388">vQooQv</a></li>
+        <li><strong>Оформление справки:</strong> собрано сообществом на основе официальных readme, туториалов и статей Nexus</li>
+      </ul>
+      <p class="text-muted">Локализация интерфейса унаследована от TesvTranslator и Fallout4Translator. Файлы локализации находятся в папке <code>\res</code> в файле <code>res.ini</code>.</p>
+    </section>
+  </section>
+
+  <section id="manual" class="tab-panel">
+    <div class="page-wrap">
+      <nav class="page-toc sticky">
+        <h2>📑 Оглавление</h2>
+        <ul>
+          <li><a href="#about">О программе</a></li>
+          <li><a href="#warnings">Важные предупреждения</a></li>
+          <li><a href="#modes">Режимы редактирования</a></li>
+          <li><a href="#features">Основные возможности</a></li>
+          <li><a href="#api">Настройка API перевода</a></li>
+          <li><a href="#components">Сторонние компоненты</a></li>
+          <li><a href="#history">История версий</a></li>
+        </ul>
+      </nav>
+
+      <main>
+        <section id="about">
+          <h2>🛠 О программе</h2>
+          <p class="lead"><strong>xTranslator</strong> — единый инструмент для перевода модов <em>Skyrim, Skyrim Special Edition, Starfield, Fallout 4, Fallout 76</em> и <em>Fallout: New Vegas</em>. Различные названия (<code>tesvTranslator</code>, <code>sseTranslator</code>, <code>fallout4Translator</code> и др.) — это в основном пресеты рабочего пространства и путей; переключать игру можно прямо в программе.</p>
+          <p>Инструмент предназначен для перевода и сопровождения модов: от отдельных строк до крупных локализаций. Он работает со строками плагинов, STRINGS-файлами, Papyrus-скриптами, MCM-меню, звуковыми fuz-файлами и архивами BSA/BA2.</p>
+          <figure class="screenshot">
+            <img src="assets/img/main-window.png" alt="Главное окно xTranslator с русским интерфейсом">
+            <figcaption>Главное окно xTranslator (русский интерфейс). Внизу — вкладки разделов и встроенная справка.</figcaption>
+          </figure>
+          <div class="important">
+            <strong>Важно:</strong> xTranslator распространяется бесплатно и официально размещается на Nexus Mods. Не загружайте его на другие сайты без разрешения автора.
+          </div>
+        </section>
+
+        <section id="warnings">
+          <h2>⚠️ Важные предупреждения</h2>
+          <div class="warning-box">
+            <strong>Не для локализации / делокализации ESP/ESM</strong><br>
+            xTranslator <u>не предназначен</u> для прямой локализации или делокализации файлов *.esp / *.esm. Для этих задач используйте <strong>xEdit</strong> (TES5Edit / SSEEdit / FO4Edit / SF1Edit).
+          </div>
+          <div class="warning-box">
+            <strong>VMAD — скриптовые свойства</strong><br>
+            Автоматический string-to-string перевод не применяется к VMAD по умолчанию, так как ошибка в свойствах VMAD может сломать мод. Переводите VMAD только осознанно — см. <a href="#vmad">гайд по VMAD в туториале</a>.
+          </div>
+          <p class="text-muted">Ответы на частые вопросы и ссылки на оригинальные статьи Nexus — на странице <a href="#faq">FAQ</a>.</p>
+        </section>
+
+        <section id="modes">
+          <h2>📑 Режимы редактирования</h2>
+          <table>
+            <tr><th>Режим</th><th>Описание</th></tr>
+            <tr><td><strong>ESP-режим</strong></td><td>Прямое редактирование esp/esm/esl и их строк. Между записями можно переключаться двойным щелчком; отображается список полей записи.</td></tr>
+            <tr><td><strong>STRINGS-режим</strong></td><td>Работа только с *.strings / *.dlstrings / *.ilstrings без изменения esp/esm. <span class="text-muted">Устаревший режим; рекомендуется использовать Гибридный режим.</span></td></tr>
+            <tr><td><strong>Гибридный режим</strong></td><td>esp выступает структурой записей и полей для прямого редактирования строк. STRINGS-файлы должны лежать рядом с esp в папке <code>.\strings</code>.</td></tr>
+            <tr><td><strong>MCM/Перевод</strong> (<code>Load_MCMmenu</code>)</td><td>Перевод текстов интерфейса модов (SkyUI) и оригинальных UI-строк игры: «Загрузить MCM/Перевод файла» (в новых версиях — «Загрузить файл MCM/Текст пользователя»).</td></tr>
+            <tr><td><strong>Скрипты Papyrus / PEX</strong></td><td>Перевод PEX-скриптов через встроенный декомпилятор PEX или внешний (например, Champollion). Внутренние переменные блокируются от случайного изменения.</td></tr>
+          </table>
+        </section>
+
+        <section id="features">
+          <h2>⚙️ Основные возможности</h2>
+          <table>
+            <tr><th>Возможность</th><th>Краткое описание</th></tr>
+            <tr><td><strong>Словари SST</strong></td><td>Построение и применение баз перевода из существующих файлов строк и плагинов (меню «Словарь»).</td></tr>
+            <tr><td><strong>Сравнить ESP</strong> (<code>Esp_Compare</code>)</td><td>Перенос перевода между версиями модов на разных языках через сопоставление FormID (в исходниках — espCompare).</td></tr>
+            <tr><td><strong>Эвристический перевод</strong> (<code>Heuristic</code>)</td><td>Поиск похожих строк и подсказки «на лету» (расстояние Левенштейна).</td></tr>
+            <tr><td><strong>Карта FUZ</strong> (<code>FuzMap</code>)</td><td>Привязка и прослушивание аудиореплик (.fuz, .wav, .xwm).</td></tr>
+            <tr><td><strong>Просмотр различий</strong> (<code>Diff_Viewer</code>)</td><td>Наглядное отображение различий между исходными и обновлёнными строками.</td></tr>
+            <tr><td><strong>Проверка псевдонимов</strong> (<code>Alias_Check</code>)</td><td>Контроль целостности тегов <code>&lt;Alias&gt;</code> между оригиналом и переводом.</td></tr>
+            <tr><td><strong>RegEx-инструменты</strong></td><td>Поиск, замена и перевод по шаблонам регулярных выражений («Инструмент перевода RegEx»).</td></tr>
+            <tr><td><strong>Проверка орфографии</strong></td><td>Встроенная проверка через MS Word или словари Hunspell/OpenOffice.</td></tr>
+            <tr><td><strong>API перевода</strong> (<code>TranslationApi</code>)</td><td>Интеграция с DeepL, MsTranslator, Google, OpenAI, Youdao, Baidu, Ollama.</td></tr>
+            <tr><td><strong>Пользовательский словарь</strong> (<code>Custom_Dic</code>)</td><td>Формирование словарных пар прямо в процессе работы.</td></tr>
+            <tr><td><strong>XML-обмен</strong></td><td>«Экспортировать перевод» / «Импортировать перевод» — полноценный XML для совместной работы.</td></tr>
+            <tr><td><strong>BSA / BA2</strong></td><td>Прямое извлечение строк и скриптов из контейнеров BSA / BA2.</td></tr>
+            <tr><td><strong>TAG/ID</strong> (<code>FormColabId</code>)</td><td>Метки для совместных переводов больших модов (ранее Collab ID).</td></tr>
+            <tr><td><strong>Обработка заголовков</strong> (<code>HeaderProcessor</code>)</td><td>Автоматическая сортировка предметов и добавление заголовков/тегов.</td></tr>
+          </table>
+        </section>
+
+        <section id="api">
+          <h2>🔌 Настройка API перевода</h2>
+          <p>xTranslator умеет отправлять строки в различные онлайн-сервисы перевода. Настройки API находятся в файле <code>xTranslator\Misc\ApiTranslator.txt</code> и в панели <em>Параметры → API перевода</em> (<code>Options → TranslationApi</code>).</p>
+
+          <h3>Быстрые эндпоинты из ApiTranslator.txt</h3>
+          <table>
+            <tr><th>Сервис</th><th>URL эндпоинта</th><th>Примечание</th></tr>
+            <tr><td>DeepL (бесплатный)</td><td><code>https://api-free.deepl.com/v2/translate</code></td><td>Pro-аккаунт: <code>api.deepl.com</code></td></tr>
+            <tr><td>Google</td><td><code>https://translate-pa.googleapis.com/v1/translateHtml</code></td><td>Бесплатный эндпоинт, стабильность не гарантируется</td></tr>
+            <tr><td>MsTranslator (Azure)</td><td><code>https://api.cognitive.microsofttranslator.com/translate?api-version=3.0</code></td><td>Требуется ключ Azure Cognitive Services</td></tr>
+            <tr><td>OpenAI</td><td><code>http://127.0.0.1:8080/v1/chat/completions</code></td><td>Совместимый эндпоинт; ключ прописывается в настройках</td></tr>
+            <tr><td>Ollama</td><td><code>http://127.0.0.1:8080/ollama/v1/chat/completions</code></td><td>Локальный сервер; API-ключ не обязателен</td></tr>
+            <tr><td>AiTunnel</td><td><code>https://api.aitunnel.ru/v1/chat/completions</code></td><td>OpenAI-совместимый прокси</td></tr>
+            <tr><td>GPTunnel</td><td><code>https://gptunnel.ru/v1/chat/completions</code></td><td>OpenAI-совместимый прокси</td></tr>
+            <tr><td>Youdao</td><td><code>http://openapi.youdao.com/api</code></td><td>Требуется appKey и sign</td></tr>
+            <tr><td>Baidu</td><td><code>http://api.fanyi.baidu.com/api/trans/vip/translate</code></td><td>Требуется appid, salt, sign</td></tr>
+          </table>
+
+          <h3>Локальные и облачные LLM</h3>
+          <ul>
+            <li><strong>LM Studio / Ollama:</strong> запустите локальный сервер на <code>127.0.0.1:8080</code> (или другом порте), выберите модель в настройках xTranslator. Подходит для офлайн-перевода при наличии мощной видеокарты.</li>
+            <li><strong>AiTunnel / GPTunnel / OpenRouter:</strong> облачные OpenAI-совместимые провайдеры. Позволяют использовать современные модели без собственного железа.</li>
+            <li><strong>DeepL / Google / Bing:</strong> классические нейро/статистические переводчики. Лучше всего подходят для коротких игровых строк, но могут «съедать» теги форматирования — всегда проверяйте результат.</li>
+          </ul>
+
+          <div class="important">
+            <strong>Совет:</strong> в ApiTranslator.txt можно настроить лимиты символов (<code>*_CharLimit</code>), таймауты (<code>*_TimeOut</code>), размер пакета (<code>*_ArrayLimit</code>) и паузы между запросами (<code>*_ArrayTimePause</code>). Для локальных моделей увеличьте таймаут до 120 000 мс.
+          </div>
+        </section>
+
+        <section id="components">
+          <h2>📦 Сторонние компоненты</h2>
+          <ul class="link-list">
+            <li><strong>SynEdit:</strong> <a href="https://github.com/SynEdit/SynEdit">github.com/SynEdit/SynEdit</a></li>
+            <li><strong>VirtualStringTree:</strong> автор Mike Lischke — <a href="http://www.soft-gems.net/">soft-gems.net</a></li>
+            <li><strong>Diff Unit:</strong> модуль для эвристического сравнения текста, автор Angus Johnson — <a href="http://www.angusj.com/delphi/textdiff.html">angusj.com</a></li>
+            <li><strong>HtmlViewer:</strong> <a href="https://github.com/BerndGabriel/HtmlViewer">github.com/BerndGabriel/HtmlViewer</a></li>
+            <li><strong>ZLibex 1.2.3:</strong> <a href="http://www.dellapasqua.com/">dellapasqua.com</a> и xEdit</li>
+            <li><strong>LZ4:</strong> <a href="https://github.com/atelierw/LZ4Delphi">github.com/atelierw/LZ4Delphi</a> и xEdit</li>
+            <li>Часть алгоритмов чтения BSA/BA2/Stream заимствована из <strong>xEdit</strong></li>
+            <li><strong>OmniXML:</strong> <a href="https://github.com/mremec/omnixml">github.com/mremec/omnixml</a></li>
+            <li><strong>PCRE Regex library:</strong> <a href="http://www.regular-expressions.info/delphi.html">regular-expressions.info</a> (Unicode-версия)</li>
+            <li><strong>Hunspell:</strong> <a href="https://github.com/hunspell/hunspell/releases">github.com/hunspell/hunspell</a> (MPL 1.1)</li>
+            <li><strong>xWMAEncode.exe:</strong> утилита из DirectX SDK (Microsoft)</li>
+            <li><strong>Madshi Exception Handler:</strong> <a href="http://www.madshi.net/">madshi.net</a> (некоммерческая версия)</li>
+          </ul>
+          <p>Особая благодарность: Bethesda, команде TES5Edit/xEdit, Alexander Blade (OpCode Fallout 4 для Pex), сообществу моддеров.</p>
+        </section>
+
+        <section id="history">
+          <h2>🕑 История версий (ключевые релизы)</h2>
+
+          <div class="version">
+            <strong>Версия 1.7.2</strong>
+            <ul>
+              <li>API перевода: изменён эндпоинт для Google (бесплатный).</li>
+              <li>Обновлён японский и итальянский интерфейс.</li>
+            </ul>
+          </div>
+
+          <div class="version">
+            <strong>Версия 1.7.0</strong>
+            <ul>
+              <li>API перевода: добавлена поддержка Ollama и опция TimeOut для каждого API.</li>
+              <li>Корректная поддержка Starfield Small/Medium ESM, нормализация FormID.</li>
+              <li>«Сравнить ESP» улучшено для light/medium модов Starfield.</li>
+            </ul>
+          </div>
+
+          <div class="version">
+            <strong>Версия 1.6.0</strong>
+            <ul>
+              <li>Добавлен ShatteredSpace.esm в словарь Starfield.</li>
+              <li>Обновлено определение BSA для Starfield.</li>
+              <li>Переход на Delphi 12.1 CE, обновлены VirtualTree и HtmlViewer.</li>
+            </ul>
+          </div>
+
+          <div class="version">
+            <strong>Версия 1.5.9</strong>
+            <ul>
+              <li>Инструмент перевода RegEx: поддержка <code>\r</code> и <code>\n</code> как явных символов конца строки.</li>
+              <li>Полная поддержка Small/Medium основных модулей для Starfield.</li>
+            </ul>
+          </div>
+
+          <div class="version">
+            <strong>Версия 1.5.3</strong>
+            <ul>
+              <li>Добавлена поддержка OpenAI API.</li>
+              <li>Подсказка для виджета счётчика перевода (<code>TranslationMeter</code>).</li>
+            </ul>
+          </div>
+
+          <div class="version">
+            <strong>Версия 1.4.16</strong>
+            <ul>
+              <li>Добавлена пакетная обработка (<code>batchProcessor</code>).</li>
+              <li>Ускорен эвристический перевод.</li>
+            </ul>
+          </div>
+
+          <div class="version">
+            <strong>Версия 1.4.10</strong>
+            <ul>
+              <li>Полная поддержка DPI для мониторов с высоким разрешением.</li>
+              <li>Система автосохранения словарей в <code>_xTranslator\UserDictionaries\[Game]\Auto\</code>.</li>
+            </ul>
+          </div>
+
+          <div class="version">
+            <strong>Версия 1.4.0 Alpha</strong>
+            <ul>
+              <li>Добавлена базовая поддержка Starfield.</li>
+            </ul>
+          </div>
+
+          <div class="version">
+            <strong>Версия 1.1.0</strong>
+            <ul>
+              <li>Переработка VMAD: поддержка внешнего декомпилятора PEX (Champollion).</li>
+              <li>XML-словари теперь поддерживают VMAD.</li>
+            </ul>
+          </div>
+
+          <div class="version">
+            <strong>Версия 1.0.0</strong>
+            <ul>
+              <li>Добавлена панель инструментов (<code>ToolBox</code>) и пользовательский словарь.</li>
+              <li>Улучшен кэш производных строк.</li>
+              <li>Исправлена работа воспроизведения FUZ.</li>
+            </ul>
+          </div>
+
+          <p class="text-muted">Полный список изменений см. в файле <code>_UpdateNotice.txt</code> и оригинальном SSTReadMe.htm.</p>
+        </section>
+      </main>
+    </div>
+  </section>
+
+  <section id="tutorial" class="tab-panel">
+    <div class="page-wrap">
+      <nav class="page-toc sticky">
+        <h2>📑 Оглавление</h2>
+        <ul>
+          <li><a href="#build-cache">Построение словаря</a></li>
+          <li><a href="#esp-mode">Режим ESP</a></li>
+          <li><a href="#translation">Прямой, эвристический и машинный перевод</a></li>
+          <li><a href="#esp-compare">Сравнение ESP</a></li>
+          <li><a href="#vmad">VMAD — скриптовые свойства</a></li>
+          <li><a href="#strings-mode">Режим STRINGS</a></li>
+          <li><a href="#strings-load">Загрузка STRINGS</a></li>
+          <li><a href="#strings-inject">Встраивание STRINGS</a></li>
+          <li><a href="#flags">Флаги строк</a></li>
+          <li><a href="#regex">RegEx-замены</a></li>
+          <li><a href="#headers">Обработка заголовков (DefUI)</a></li>
+          <li><a href="#olddialog">Старый стиль диалогового окна</a></li>
+          <li><a href="#batch">Пакетная обработка</a></li>
+          <li><a href="#spellcheck">Проверка орфографии</a></li>
+          <li><a href="#npc">Карта NPC и FUZ</a></li>
+          <li><a href="#workflow">Типовой рабочий процесс</a></li>
+          <li><a href="#mistakes">Типичные ошибки новичков</a></li>
+        </ul>
+      </nav>
+
+      <main>
+        <section id="build-cache">
+          <h2>🏗️ Построение словаря</h2>
+          <p>Лучший способ использовать xTranslator — сначала создать словарь с исходным и целевым языком. Наиболее удобным исходным языком является английский, так как почти все моды сделаны на нём.</p>
+          <p>Вам понадобятся все три файла <code>skyrim_english.(S,DL,IL)Strings</code> в папке <code>Skyrim\Data\Strings\</code> рядом с файлами для вашего языка. Если этих файлов нет — скачайте их в разделе Optional на странице SST в Nexus. В Fallout 4 / Skyrim SE 1.7+ строки обычно находятся в архиве <code>Interface.ba2/bsa</code>, и отдельные файлы не нужны.</p>
+          <ol>
+            <li>Запустите xTranslator и выберите правильное рабочее пространство игры.</li>
+            <li>Откройте <em>Файл → Настроить языки</em> (<code>Set_Vocab</code>, в старых версиях — <em>Set Vocabulary and Cache</em>).</li>
+            <li>Задайте <strong>исходный</strong> и <strong>целевой</strong> языки.</li>
+            <li>Укажите пути к папкам <code>.\data</code> и <code>.\strings</code>, если они не определились автоматически.</li>
+            <li>Выберите тип словаря:
+              <ul>
+                <li><strong>Расширенные словари</strong> (<code>Gen_AdvDic</code>) — рекомендуются: точнее, требуют ESM + STRINGS.</li>
+                <li><strong>Базовые словари</strong> (<code>Gen_BasicDic</code>) — устаревший вариант, только STRINGS, менее точный.</li>
+              </ul>
+            </li>
+            <li>Если хотите игнорировать строки внутри BSA/BA2, отметьте <em>«Использовать .STRINGS в папке \strings (игнорировать bsa/ba2)»</em> (<code>Chk_OnlyLooseFile</code>).</li>
+            <li>Нажмите <strong>«Создать словарь»</strong> (<code>but_Build_Dic</code>) или <strong>«Построить кэш»</strong> (<code>Build_Cache</code>). Процесс займёт несколько секунд.</li>
+          </ol>
+          <div class="ok-box">
+            Если всё настроено правильно, информация о кэше подсвечивается зелёным. Теперь можно открывать моды.
+          </div>
+          <figure class="screenshot">
+            <img src="assets/img/dictionaries.png" alt="Окно настройки словарей и памяти xTranslator">
+            <figcaption>Окно настройки словарей и памяти (официальный скриншот; в русской версии элементы те же).</figcaption>
+          </figure>
+          <h3>Управление словарями и резервные копии</h3>
+          <ul>
+            <li><strong>Загрузить и редактировать пользовательский словарь</strong> (<code>Hint_VocabOCustom</code>) — ваш личный словарь.</li>
+            <li><strong>Сохранить пользовательский словарь</strong> (<code>Hint_VocabSCustom</code>).</li>
+            <li><strong>Объединить выбранные словари</strong> (<code>Hint_mergeSST</code>) — удобно для слияния наработок.</li>
+            <li><strong>Сортировать словари</strong> (<code>Hint_SortSST</code>): по алфавиту; пользовательский кэш всегда внизу списка.</li>
+            <li><strong>Перезагрузить кэш</strong> (<code>Hint_VocabReload</code>) после изменения файлов.</li>
+            <li><strong>Применить выбранные словари как ресурс</strong> (<code>Hint_applySst</code>) для редактируемого аддона.</li>
+            <li><strong>Принудительно загружать словарь</strong> (<code>Hint_forceLoadSST</code>) при открытии esp/pex/MCM, даже если он не отмечен.</li>
+          </ul>
+          <div class="important">
+            <strong>Автосохранение</strong> (<code>Hint_Autobackup</code>) сохраняет копию рабочего словаря в подпапку <code>.\auto\</code>, а регулярные резервные копии (<code>Hint_Savebackup</code>) — в <code>.\backup\</code>. Включите оба параметра: потеря словаря обходится дороже, чем место на диске.
+          </div>
+        </section>
+
+        <section id="esp-mode">
+          <h2>📁 Режим ESP</h2>
+          <p>Загрузите <code>*.esp</code> / <code>*.esm</code> / <code>*.esl</code>, переведите строки и сохраните — всё просто. Однако лучше сначала создать словарь (см. раздел выше).</p>
+          <p>При редактировании строки в окне редактирования (панель <em>espRecord</em> — «Сохранить ESP») отображается список всех полей записи. Между записями можно переключаться двойным щелчком. Все функции работают так же, как в режиме STRINGS.</p>
+          <div class="important">
+            <strong>Примечание:</strong> некоторые поля могут быть пропущены. Если вы заметите непереведённые данные в игре — сообщите название мода автору. Также можно добавить их вручную в файл <code>records.txt</code>, но осторожно.
+          </div>
+          <div class="important">
+            <strong>Примечание 2:</strong> если исходный esp повреждён (например, редактировался старыми инструментами), xTranslator может отказаться его загружать. В таком случае проверьте целостность esp через xEdit.
+          </div>
+        </section>
+
+        <section id="translation">
+          <h2>🔁 Прямой, эвристический и машинный перевод</h2>
+          <figure class="screenshot">
+            <img src="assets/img/editor.png" alt="Окно редактирования перевода xTranslator">
+            <figcaption>Окно редактирования: оригинал и перевод, кнопки машинного перевода и проверки (официальный скриншот).</figcaption>
+          </figure>
+          <h3>Прямой перевод — <code>Trans_Exact</code>, <kbd>Ctrl</kbd>+<kbd>T</kbd></h3>
+          <p>Ищет точное совпадение исходной строки в словарях и подставляет готовый перевод. Это самый безопасный автоперевод: строки получают белый флаг. Если точного совпадения нет, строка остаётся нетронутой.</p>
+          <h3>Эвристический перевод — <code>Heuristic</code>, <kbd>Ctrl</kbd>+<kbd>H</kbd></h3>
+          <p>Ищет похожие строки и оценивает близость по расстоянию Левенштейна. Близкие варианты подсвечиваются зелёным, слабые — красным. Щелчок по строке открывает список вариантов, отсортированный по LD. Такие строки не сохраняются автоматически: их нужно проверить и подтвердить.</p>
+          <h3>Быстрый строгий перевод — QuickTrans, <kbd>Ctrl</kbd>+<kbd>R</kbd></h3>
+          <p>Переводит выделенные строки по строгому совпадению EDID + string. Удобен, когда нужно быстро обработать большой список однотипных записей.</p>
+          <h3>Ручное подтверждение</h3>
+          <ul>
+            <li><kbd>F1</kbd> — полный перевод (синий).</li>
+            <li><kbd>F2</kbd> — частичный перевод (фиолетовый).</li>
+            <li><kbd>F3</kbd> — «Перевод не требуется» (<code>Menu_Locked</code>).</li>
+            <li><kbd>F4</kbd> — отменить перевод и вернуть строку в «не переведено».</li>
+          </ul>
+          <h3>Машинный перевод через API</h3>
+          <p>В «Настройка API перевода» (<code>Options → TranslationApi</code>) подключаются DeepL, Google, Microsoft, OpenAI-совместимые сервисы, LM Studio и Ollama. API переводит выделение в поле перевода, а если выделения нет — исходную строку. Результат всегда проверяйте: машинный перевод не знает контекста мода и терминологии сообщества.</p>
+          <p class="text-muted">Значение цветных флагов, которые получают строки после каждого вида перевода, — в разделе <a href="#flags">«Флаги строк»</a>.</p>
+        </section>
+
+        <section id="esp-compare">
+          <h2>🔄 Сравнить ESP (espCompare)</h2>
+          <p>Этот инструмент позволяет напрямую создавать пары строк из одного esp в другой. Кодировка задаётся целевым языком.</p>
+          <p><strong>Пример:</strong> у вас есть мод на английском и его предыдущая переведённая версия. Откройте английский esp, затем через <em>Файл → Загрузить ESP (сравнить)</em> (<code>LoadEspCompare</code>) откройте переведённый. Все строки с одинаковым FormID будут автоматически сопоставлены.</p>
+          <p><strong>Ограничения:</strong> некоторые строки связаны не напрямую с FormID, а с перечислениями внутри записей. Если автор мода добавил/удалил элементы, пары строк могут быть неточными. Такие строки помечаются флагом <em>«Частичный перевод»</em> (<code>F2</code>). Если риск ошибки высокий, рядом появляется значок <strong>«лампочка»</strong>.</p>
+          <ul>
+            <li><strong>Лампочка включена</strong> — риск велик, так как в записи более одного перечисляемого поля. В панели <em>«Сравнение результатов ESP»</em> (<code>EspCompRes</code>) можно вручную исправить.</li>
+            <li><strong>Лампочка выключена</strong> — запись содержит только одно перечисляемое поле.</li>
+          </ul>
+          <div class="warning-box">
+            Строки с предупреждением «лампочка включена» не сохраняются в пользовательский кэш, пока вы их не подтвердите вручную.
+          </div>
+        </section>
+
+        <section id="vmad">
+          <h2>🧩 VMAD — скриптовые свойства</h2>
+          <p>VMAD хранит свойства скриптов, привязанных к записи. Часть значений — обычный текст, но многие являются именами переменных и идентификаторами. Ошибка в VMAD может сломать квест или предмет.</p>
+          <ul>
+            <li>Активируйте VMAD кнопкой в окне (<code>Hint_VMADFound</code>); если кнопка неактивна — VMAD в файле не найден или функция отключена в настройках.</li>
+            <li>Используйте фильтр «строки свойств VMAD» (<code>Hint_SearchVMAD2</code>).</li>
+            <li>Переводите только те значения, которые действительно являются текстом для игрока.</li>
+            <li>Блокируйте строки с префиксом <code>$</code> (<code>Hint_LockTranslateTag</code>), чтобы случайно их не изменить; после правки перезагрузите файл Papyrus.</li>
+          </ul>
+          <h3>Как перевести VMAD автоматически</h3>
+          <ol>
+            <li>Выберите нужные строки или отметьте их как «Частичный перевод» (фиолетовый статус, клавиша <kbd>F2</kbd>).</li>
+            <li>Запустите «Прямой перевод» (<kbd>Ctrl</kbd>+<kbd>T</kbd>) с опцией перезаписи выбранных строк.</li>
+            <li>Обязательно проверяйте результат вручную.</li>
+          </ol>
+          <div class="warning-box">
+            <strong>Всегда тестируйте VMAD в игре.</strong> Автоматический string-to-string перевод к VMAD по умолчанию не применяется — это сделано специально.
+          </div>
+        </section>
+
+        <section id="strings-mode">
+          <h2>📄 Режим STRINGS</h2>
+          <p>Интерфейс устаревший, но рабочий. Предполагается, что у вас есть английские файлы Strings рядом с файлами вашего языка.</p>
+          <p><strong>Пример:</strong> перевод <em>Unofficial Skyrim Patch</em> с английского на французский.</p>
+          <ol>
+            <li>Сначала нужно «делокализовать» мод через xEdit (TES5Edit / SSEEdit).</li>
+            <li>Загрузите <code>Unofficial Skyrim Patch.esp</code>.</li>
+            <li>ПКМ → <em>Other → Localization</em>. Убедитесь, что язык — английский.</li>
+            <li>Выберите <em>localize → YES</em>, ничего не отмечайте, сохраните.</li>
+            <li>В папке <code>Strings</code> появятся три файла:
+              <ul>
+                <li><code>Unofficial Skyrim Patch_English.STRINGS</code></li>
+                <li><code>Unofficial Skyrim Patch_English.DLSTRINGS</code></li>
+                <li><code>Unofficial Skyrim Patch_English.ILSTRINGS</code></li>
+              </ul>
+            </li>
+          </ol>
+          <div class="important">
+            В этот момент игра может упасть при запуске, так как esp больше не содержит встроенных строк. Переведите файлы в xTranslator, а затем встройте их обратно через xEdit.
+          </div>
+        </section>
+
+        <section id="strings-load">
+          <h2>🔍 Загрузка и перевод STRINGS</h2>
+          <ol>
+            <li>В меню выберите <em>Файл → Открыть STRINGS</em> (<code>Load_Strings</code>) и откройте <code>Unofficial Skyrim Patch_English.STRINGS</code>.</li>
+            <li>В меню <em>Перевод</em> выберите <em>«Прямой перевод»</em> (<code>Trans_Exact</code>, <kbd>Ctrl</kbd>+<kbd>T</kbd>). Все строки с точным совпадением будут переведены. Непереведённые строки подсвечиваются красным.</li>
+            <li>Красные строки можно перевести вручную или использовать <em>«Эвристический перевод (текущий список)»</em> (<code>Heuristic</code>, <kbd>Ctrl</kbd>+<kbd>H</kbd>). xTranslator ищет похожие строки и предлагает лучший вариант. Лучшие совпадения — зелёные, плохие — красные.</li>
+            <li>Можно просмотреть альтернативные варианты (знак «+» в колонке LD). Если перевод неверный — <em>«Отменить перевод»</em> (<kbd>F4</kbd>). Если верный — <em>«Подтвердить полный перевод»</em> (<kbd>F1</kbd>), строка станет синей.</li>
+          </ol>
+          <p>После подтверждения строк сохраните словарь SST (<em>«Сохранить словарь SST»</em>, <kbd>Ctrl</kbd>+<kbd>S</kbd>). В будущем переводы будут автоматически подгружаться. Когда всё готово — сохраните файлы на целевом языке с правильной кодировкой.</p>
+        </section>
+
+        <section id="strings-inject">
+          <h2>⬅️ Встраивание переведённых STRINGS обратно в esp через xEdit</h2>
+          <ol>
+            <li>Откройте xEdit.</li>
+            <li>Загрузите мод.</li>
+            <li>В меню <em>Other → Localization</em> выберите ваш язык (при условии, что файлы <code>Skyrim_Language.strings</code> и <code>yourmod_Language.strings</code> находятся в папке <code>Data\strings</code>).</li>
+            <li>Затем выберите <em>Other → Localization → Delocalize</em>.</li>
+            <li>Если всё сделано правильно, xEdit предложит просто сохранить esp без лишних окон (кроме предупреждения).</li>
+          </ol>
+        </section>
+
+        <section id="flags">
+          <h2>🏳️ Флаги строк</h2>
+          <p>Во время перевода строки могут быть отмечены различными флагами, отображаемыми разными цветами. Каждый флаг имеет своё значение:</p>
+          <figure class="screenshot">
+            <img src="assets/img/flags.png" alt="Список строк xTranslator с цветными флагами">
+            <figcaption>Список строк с цветными флагами: жёлтые — предупреждения Alias, зелёные — эвристические совпадения, синие — подтверждённый перевод.</figcaption>
+          </figure>
+          <table>
+            <tr><th>Флаг</th><th>Значение</th><th>Горячая клавиша</th></tr>
+            <tr>
+              <td><span class="badge badge-white">Переведено (Белый)</span></td>
+              <td>Строки, переведённые напрямую через словарный кэш. Добавляются в глобальный кэш при сохранении.</td>
+              <td>—</td>
+            </tr>
+            <tr>
+              <td><span class="badge badge-blue">Полный перевод (Синий)</span></td>
+              <td>Подтверждено пользователем. Считается полностью переведённым и попадает в глобальный словарный кэш.</td>
+              <td><kbd>F1</kbd></td>
+            </tr>
+            <tr>
+              <td><span class="badge badge-purple">Частичный перевод (Фиолетовый)</span></td>
+              <td>«Работа в процессе». Сохраняется в SSTStrings текущего аддона, но не добавляется в глобальный кэш. Некоторые инструменты (поиск/замена, espCompare) автоматически ставят этот флаг.</td>
+              <td><kbd>F2</kbd></td>
+            </tr>
+            <tr>
+              <td><span class="badge badge-green">Эвристическое совпадение (Зелёный)</span></td>
+              <td>Автоматически найденные похожие строки (<kbd>Ctrl</kbd>+<kbd>H</kbd>). Близкие к оригиналу подсвечиваются зелёным. Не сохраняются в SSTStrings до подтверждения.</td>
+              <td><kbd>Ctrl</kbd>+<kbd>H</kbd></td>
+            </tr>
+            <tr>
+              <td><span class="badge badge-red">Низкое совпадение / Не переведено (Красный)</span></td>
+              <td>Слабые совпадения — красные. <kbd>F4</kbd> сбрасывает строку в «не переведено» и удаляет перевод. Такие строки не попадают в кэш.</td>
+              <td><kbd>F4</kbd></td>
+            </tr>
+            <tr>
+              <td><span class="badge badge-yellow">Предупреждение Alias (Жёлтый)</span></td>
+              <td>Ссылки <code>&lt;Alias&gt;</code> не совпадают между оригиналом и переводом. Имеет приоритет над другими флагами; требует ручной проверки.</td>
+              <td>—</td>
+            </tr>
+          </table>
+          <p class="text-muted">Щелчок по строке с эвристическим совпадением показывает все похожие варианты, отсортированные по расстоянию Левенштейна (LD). Знак «+» рядом с числом LD означает наличие нескольких результатов.</p>
+        </section>
+
+        <section id="regex">
+          <h2>🔧 RegEx-замены</h2>
+          <p>Регулярные выражения позволяют массово обрабатывать префиксы, теги, числа и однотипные конструкции. Синтаксис обратных ссылок описан во встроенной подсказке (<code>Hint_RegExReplace3</code>):</p>
+          <ul>
+            <li><code>#1</code>, <code>#2</code>… — простое замещение без перевода;</li>
+            <li><code>%1</code>, <code>%2</code>… — замещение с прямым переводом;</li>
+            <li><code>$1</code>, <code>$2</code>… — замещение с эвристическим переводом.</li>
+          </ul>
+          <p>В режиме «Не искать, добавить заменяющий термин в перевод» (<code>justAddInDest</code>) используйте <code>%d</code> для вставки исходной строки назначения, например <code>%1/$1/#1 %d</code>. Перенос строки добавляется через <code>\r</code>, <code>\n</code> или <code>\r\n</code>.</p>
+          <h3>Пример: сохранить префикс и перевести остаток</h3>
+          <pre>Шаблон поиска:  ^([\[\(\{\|].+?[\|\]\}\)]) (.+)
+Замена:         #1 %2</pre>
+          <p>Часть <code>(Note)</code> останется без изменений, а <code>My Special Demo Note</code> будет переведена прямым переводом.</p>
+          <div class="faq-box">
+            <h3>Практика</h3>
+            <p>Перед массовой заменой сделайте резервную копию словаря и проверьте правило на 5–10 строках. RegEx легко задеть лишнее — особенно в названиях предметов и диалогах.</p>
+          </div>
+        </section>
+
+        <section id="headers">
+          <h2>🏷️ Обработка заголовков (DefUI)</h2>
+          <p>«Обработка заголовков» (<code>HeaderProcessor</code>) автоматически добавляет заголовки и сортировочные теги к предметам. Инструмент особенно полезен для Fallout 4/76 и модов DefUI / Better Item Sorting.</p>
+          <ol>
+            <li>Убедитесь, что правила лежат в <code>[game]\Data\_HeaderRules\</code>, или перетащите файл <code>rules.txt</code> в окно инструмента.</li>
+            <li>Проверьте набор правил: заголовки могут задаваться по EDID, KEYWORD и связанным записям.</li>
+            <li>Для регулярных выражений добавьте <code>#</code> перед шаблоном EDID/KWRD.</li>
+            <li>Поддерживаются шаблоны с <code>%s</code>; fallback-ссылки помогают для MGEF/PERK/AVIF/ENCH (OMOD), LGDI (связанный предмет) и ALCH (эффекты как pseudo-Keyword).</li>
+            <li>Примените правила к выбранным записям или исключите устаревшие, затем проверьте результат в списке.</li>
+          </ol>
+          <div class="important">
+            Заголовки меняют отображаемые названия предметов. После обработки обязательно проверьте сортировку в игре: неверный тег может отправить предмет в чужую категорию.
+          </div>
+        </section>
+
+        <section id="olddialog">
+          <h2>🗣️ Старый стиль диалогового окна</h2>
+          <p>Инструмент «Старый стиль диалогового окна» (<code>OldDialogStyle</code>) генерирует строки в стиле модов «Full Dialog Interface» и «NewDialog».</p>
+          <ul>
+            <li>Загружает строки <code>DNAM</code> из основных модулей (мастер-файлов), если все нужные esm/esp загружены вместе.</li>
+            <li>Добавляет префиксы диалогов (Flirt, Romance, Barter и др.).</li>
+            <li>Копирует оригинальный источник для <code>&lt;Alias/global&gt;</code>.</li>
+            <li>Сокращает или пропускает слишком длинные строки.</li>
+          </ul>
+          <div class="important">
+            Для генерации <code>.strings</code> под New Dialog / FullDialog Interface (Nuka World, Far Harbor, UFO4P) загружайте соответствующие esm одновременно, например <code>NukaWorld.esm</code> и <code>Fallout4.esm</code>.
+          </div>
+        </section>
+
+        <section id="batch">
+          <h2>⚙️ Пакетная обработка</h2>
+          <p>«Пакетная обработка» (<code>batchProcessor</code>) применяет набор правил поиска и замены к файлам. Правила хранятся в текстовом файле UTF-8 <strong>с BOM</strong>.</p>
+          <pre>#Set of rules for batch Search and replace.
+#This file must be saved in utf8 *with* bom
+#each rule must start by StartRule and end by EndRule
+#Search=[String to search]
+#Replace=[replacement string]
+#Pattern=[pattern formatting output] for mode 1 &amp; 2
+#Select= 0 to 3
+#Mode= 0 to 2
+#casesensitive=1
+#AllLists=1
+
+StartRule
+Search=(Medicine)
+Replace=(Soins)
+Pattern=%REPLACE% %ORIG%
+select=0
+mode=1
+EndRule</pre>
+          <ul>
+            <li><code>Search</code> — что искать; <code>Replace</code> — на что заменять.</li>
+            <li><code>Pattern</code> — шаблон вывода: <code>%REPLACE%</code> и <code>%ORIG%</code>.</li>
+            <li><code>select</code> — область поиска (0 = все строки); <code>mode</code> — режим обработки.</li>
+            <li><code>casesensitive=1</code> — учитывать регистр; <code>AllLists=1</code> — искать во всех трёх списках строк.</li>
+          </ul>
+          <p>Готовые примеры лежат в папке <code>Batch/</code>. Всегда проверяйте результат на небольшом наборе строк.</p>
+        </section>
+
+        <section id="spellcheck">
+          <h2>🔤 Проверка орфографии</h2>
+          <p>Проверка орфографии подключается в настройках (<code>Hint_SpellCheck</code>) и работает через MS Word или Hunspell. Для русского языка нужен словарь Hunspell; для Word — установленный язык проверки.</p>
+          <ul>
+            <li>Фильтр «строки, переведённые с ошибкой проверки орфографии» (<code>Hint_SearchSp2</code>) показывает проблемные места.</li>
+            <li>Проверка не заменяет вычитку: имена собственные и термины могут отсутствовать в словаре.</li>
+            <li>Добавляйте устойчивые термины в пользовательский словарь, чтобы не проверять их повторно.</li>
+          </ul>
+        </section>
+
+        <section id="npc">
+          <h2>🗺️ Карта NPC и FUZ</h2>
+          <p>Карта NPC (NPCMap) связывает диалоги с персонажами, а FuzMap — строки с аудиофайлами. Вместе они позволяют понимать контекст реплик и проверять озвучку.</p>
+          <ul>
+            <li>Импортируйте карту NPC из xEdit (поддерживается официально).</li>
+            <li>Загрузите все основные модули (<code>LoadAllMasters</code>) — карта построится точнее; вариант <code>LoadAllMasters2</code> дополнительно обновляет карту NPC.</li>
+            <li>Прослушивайте строку клавишей <kbd>F11</kbd> (<code>Hint_playFuz</code>).</li>
+            <li>Копируйте список FUZ-файлов текущей записи в буфер обмена (<code>Hint_FuzClipboard</code>).</li>
+          </ul>
+        </section>
+
+        <section id="workflow">
+          <h2>🛤️ Типовой рабочий процесс перевода мода</h2>
+          <ol>
+            <li><strong>Установка и подготовка.</strong> Распакуйте xTranslator, убедитесь, что путь к игре определён корректно. При необходимости настройте API перевода (DeepL, Google, OpenAI/Ollama) в панели <em>Параметры → API перевода</em>.</li>
+            <li><strong>Построение словаря / кэша.</strong> <em>Файл → Настроить языки</em> → выберите языки → <em>«Создать словарь»</em> / <em>«Построить кэш»</em>. Для точности используйте <em>«Расширенные словари»</em>.</li>
+            <li><strong>Загрузка esp.</strong> <em>Файл → Открыть ESP/ESM</em> → выберите мод. Работайте в ESP- или Гибридном режиме.</li>
+            <li><strong>Точный автоперевод.</strong> <em>«Прямой перевод»</em> (<kbd>Ctrl</kbd>+<kbd>T</kbd>) — перевод всех строк с точным совпадением из словаря.</li>
+            <li><strong>Эвристика.</strong> <em>«Эвристический перевод (текущий список)»</em> (<kbd>Ctrl</kbd>+<kbd>H</kbd>) — для оставшихся красных строк программа подберёт похожие варианты. Проверьте и подтвердите (<kbd>F1</kbd>) корректные.</li>
+            <li><strong>Ручная доработка.</strong> Переведите оставшиеся строки вручную, проверьте теги <code>&lt;Alias&gt;</code>, <code>%s</code>, числа и форматирование.</li>
+            <li><strong>Валидация.</strong> Пройдитесь по строкам и нажимайте <kbd>F1</kbd> («Подтвердить полный перевод»), чтобы отметить финальные переводы синим. Используйте фильтры предупреждений.</li>
+            <li><strong>Финализация.</strong> <em>«Финализировать Esp/Esm»</em> (<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>S</kbd>) — экспорт / финализация файлов. Не финализируйте частично переведённый esp, если планируете продолжать работу.</li>
+            <li><strong>Проверка в игре.</strong> Скопируйте переведённые файлы в <code>Data</code>, запустите игру, проверьте диалоги, меню и предметы.</li>
+          </ol>
+          <div class="ok-box">
+            <strong>Совет:</strong> периодически сохраняйте словарь (<em>«Сохранить словарь SST»</em>, <kbd>Ctrl</kbd>+<kbd>S</kbd>), чтобы не потерять проделанную работу. Включите автосохранение в настройках — резервные копии будут сохраняться в <code>_xTranslator\UserDictionaries\[Game]\Auto\</code>.
+          </div>
+        </section>
+
+        <section id="mistakes">
+          <h2>🐞 Типичные ошибки новичков</h2>
+          <table>
+            <tr><th>Ошибка</th><th>Почему плохо</th><th>Как исправить</th></tr>
+            <tr>
+              <td>Перевод EditorID, имён скриптов и свойств</td>
+              <td>Мод перестанет работать: скрипты и записи ссылаются на EditorID.</td>
+              <td>Переводите только <em>строковые поля</em> (NAME, FULL, DESC и т.п.), не трогайте EDID.</td>
+            </tr>
+            <tr>
+              <td>Удаление / изменение тегов <code>&lt;Alias=...&gt;</code></td>
+              <td>Игра не подставит имя говорящего NPC; диалог сломается.</td>
+              <td>Оставляйте теги без изменений, переводите только окружающий текст. Проверяйте жёлтые предупреждения Alias.</td>
+            </tr>
+            <tr>
+              <td>Потеря форматов <code>%s</code>, <code>%d</code>, <code>[теги]</code></td>
+              <td>Строка не сформируется корректно в игре.</td>
+              <td>Сохраняйте спецификаторы в тех же позициях, что и в оригинале.</td>
+            </tr>
+            <tr>
+              <td>Неправильная кодировка</td>
+              <td>Крякозябры в игре или вылеты.</td>
+              <td>Skyrim SE / Starfield — UTF-8; Skyrim LE / Fallout NV — обычно cp1251. При необходимости используйте <em>«Принудительно задать кодировку»</em> (<code>forceCp</code>).</td>
+            </tr>
+            <tr>
+              <td>Перевод VMAD «вслепую»</td>
+              <td>Может сломать скриптовую логику мода.</td>
+              <td>Переводите VMAD только через <kbd>F2</kbd> + <em>«Прямой перевод»</em> (<kbd>Ctrl</kbd>+<kbd>T</kbd>) с перезаписью и обязательной ручной проверкой.</td>
+            </tr>
+            <tr>
+              <td>Финализация незавершённого esp</td>
+              <td>При повторном открытии xTranslator не отличит переведённые строки от непереведённых.</td>
+              <td>Всегда загружайте исходный (source) esp для продолжения работы; финализируйте только готовый результат.</td>
+            </tr>
+            <tr>
+              <td>Игнорирование «лампочки» в «Сравнить ESP»</td>
+              <td>Неточное сопоставление строк между версиями мода.</td>
+              <td>Проверьте строки с включённой лампочкой в панели <em>«Сравнение результатов ESP»</em> (<code>EspCompRes</code>).</td>
+            </tr>
+            <tr>
+              <td>Перевод слишком длинных строк для UI</td>
+              <td>Текст вылезет за границы кнопок/интерфейса.</td>
+              <td>Сверяйте длину с оригиналом, тестируйте в игре.</td>
+            </tr>
+          </table>
+        </section>
+      </main>
+    </div>
+  </section>
+
+  <section id="glossary" class="tab-panel">
+    <div class="page-wrap">
+      <nav class="page-toc sticky">
+        <h2>📑 Оглавление</h2>
+        <ul>
+          <li><a href="#terms">Глоссарий терминов</a></li>
+          <li><a href="#dont-translate">Что нельзя переводить</a></li>
+          <li><a href="#checklist">Чек-лист перед публикацией</a></li>
+        </ul>
+      </nav>
+
+      <main>
+        <section id="terms">
+          <h2>📚 Глоссарий терминов</h2>
+          <p class="text-muted">В левой колонке — термин, в скобках — название пункта или инструмента в русском интерфейсе xTranslator (ключ локализации).</p>
+          <table>
+            <tr><th>Термин (EN)</th><th>Перевод / пояснение</th></tr>
+            <tr><td>ESP / ESM / ESL</td><td>Файлы плагинов: esp — обычный мод, esm — основной модуль (мастер-файл), esl — лёгкий плагин (Creation Club).</td></tr>
+            <tr><td>FormID</td><td>Уникальный идентификатор записи внутри плагина (8 шестнадцатеричных цифр).</td></tr>
+            <tr><td>EditorID (EDID)</td><td>Редакторское имя записи, используемое скриптами и другими записями. <strong>Не переводится.</strong></td></tr>
+            <tr><td>STRINGS</td><td>Файл коротких строк (названия предметов, UI-метки).</td></tr>
+            <tr><td>DLSTRINGS</td><td>Файл длинных строк (описания, книги).</td></tr>
+            <tr><td>ILSTRINGS</td><td>Файл строк с подстановками (субтитры диалогов).</td></tr>
+            <tr><td>VMAD</td><td>Script Properties — скриптовые свойства записи. Требуют особой осторожности при переводе.</td></tr>
+            <tr><td>Papyrus / PEX</td><td>Скриптовый язык и скомпилированные скрипты Bethesda. PEX можно декомпилировать для перевода строк.</td></tr>
+            <tr><td>Fuz / FuzMap</td><td>Аудиофайлы озвучки диалогов и карта их привязки к строкам.</td></tr>
+            <tr><td>BSA / BA2</td><td>Архивы ресурсов игр Bethesda (BSA — Skyrim/FO3/FNV, BA2 — Fallout 4/76/Starfield).</td></tr>
+            <tr><td>MCM</td><td>Mod Configuration Menu — меню настройки модов через SkyUI. В xTranslator открывается режимом «MCM/Перевод» (<code>Load_MCMmenu</code>).</td></tr>
+            <tr><td>Alias</td><td>Псевдоним квеста, часто используется в диалогах как <code>&lt;Alias=Speaker&gt;</code>. Не переводится.</td></tr>
+            <tr><td>LD / Levenshtein Distance</td><td>Расстояние Левенштейна — мера похожести строк в эвристическом переводе.</td></tr>
+            <tr><td>Derived strings</td><td>Производные строки — автоматически генерируемые из шаблонов (например, [TestString] → TestString); в программе — «Вычисление производных строк» (<code>DerivedStringsGen</code>).</td></tr>
+            <tr><td>Master file</td><td>Основной модуль (мастер-файл, esm), от которого зависит плагин. Требуется для корректного разрешения FormID. В интерфейсе — «Загрузить все основные модули» (<code>LoadAllMasters</code>).</td></tr>
+            <tr><td>Delocalize / Localize</td><td>Извлечение строк из плагина в STRINGS-файлы (delocalize) и обратная вставка (localize), обычно через xEdit.</td></tr>
+            <tr><td>Tag / Collab ID</td><td>Метка строки для совместных переводов — «Задать TAG/ID» (<code>FormColabId</code>). Помогает распределять работу между переводчиками.</td></tr>
+            <tr><td>SST</td><td>Skyrim String Translator — формат словаря xTranslator. Сохраняется командой «Сохранить словарь SST» (<code>Save_SST</code>).</td></tr>
+            <tr><td>Cache / UserCache</td><td>Локальный кэш переводов, автоматически подгружаемый при открытии модов.</td></tr>
+            <tr><td>Базовые / Расширенные словари</td><td>Два способа построения словаря: базовый (<code>Gen_BasicDic</code>) и расширенный (<code>Gen_AdvDic</code>) — для большего охвата строк и эвристики.</td></tr>
+            <tr><td>Пользовательский словарь</td><td>Словарь переводчика (<code>Custom_Dic</code>), подключаемый к переводу вместе с общими словарями.</td></tr>
+            <tr><td>Codepage</td><td>Кодировка текста (UTF-8, cp1251, cp1252 и др.).</td></tr>
+            <tr><td>ForceCodepage</td><td>«Принудительно задать кодировку» (<code>forceCp</code>) — принудительная кодировка при загрузке/сохранении для конвертации файлов.</td></tr>
+            <tr><td>Record / Field</td><td>Запись плагина и её поле. Например, записи WEAP, ARMO, ALCH; поля FULL, DESC, CNAM.</td></tr>
+            <tr><td>DIAL / INFO / QUST</td><td>Типы записей: диалог, информация диалога (реплика), квест.</td></tr>
+            <tr><td>NPCMap</td><td>Карта привязки диалогов к NPC, используется вместе с FuzMap.</td></tr>
+            <tr><td>HeaderProcessor</td><td>«Обработка заголовков» — инструмент для автоматического добавления заголовков/тегов к строкам (например, сортировочные теги DefUI).</td></tr>
+            <tr><td>OldDialogStyle</td><td>«Старый стиль диалогового окна» — инструмент для генерации строк в стиле «Full Dialog Interface» / «NewDialog».</td></tr>
+            <tr><td>RegEx</td><td>Регулярные выражения — шаблоны для поиска и замены текста.</td></tr>
+            <tr><td>SpellCheck</td><td>Проверка орфографии через MS Word или Hunspell.</td></tr>
+            <tr><td>Diff Viewer</td><td>Просмотр различий между двумя версиями строки.</td></tr>
+            <tr><td>Heuristic translation</td><td>«Эвристический перевод (текущий список)» (<code>Heuristic</code>) — подбор похожих строк по расстоянию Левенштейна.</td></tr>
+            <tr><td>Direct translation</td><td>«Прямой перевод» (<code>Trans_Exact</code>) — перевод по точному совпадению из словаря.</td></tr>
+            <tr><td>Batch processor</td><td>«Пакетная обработка» (<code>batchProcessor</code>) — применение набора правил поиска и замены к файлам.</td></tr>
+            <tr><td>Finalize</td><td>«Финализировать Esp/Esm» (<code>Menu_FinalizeEsp</code>) — завершение работы над файлом и экспорт результата.</td></tr>
+            <tr><td>Lookup Fail</td><td>Ошибка, когда игра не находит строку по StringID; xTranslator может автоматически исправлять placeholder.</td></tr>
+          </table>
+        </section>
+
+        <section id="dont-translate">
+          <h2>🚫 Что нельзя переводить</h2>
+          <table>
+            <tr><th>Элемент</th><th>Почему нельзя</th><th>Пример</th></tr>
+            <tr>
+              <td>EditorID (EDID)</td>
+              <td>Используется скриптами, записями и условиями для ссылок друг на друга.</td>
+              <td><code>MyModQuest01</code>, <code>WeapIronSword</code></td>
+            </tr>
+            <tr>
+              <td>Имена скриптов и свойств VMAD</td>
+              <td>Скриптовая система ищет их по точному имени.</td>
+              <td><code>MyQuestScript</code>, <code>MyProperty</code></td>
+            </tr>
+            <tr>
+              <td>Теги <code>&lt;Alias=...&gt;</code></td>
+              <td>Подставляются движком игры; изменение сломает диалог.</td>
+              <td><code>&lt;Alias=Speaker&gt;</code></td>
+            </tr>
+            <tr>
+              <td>Форматы <code>%s</code>, <code>%d</code>, <code>%f</code>, <code>%u</code></td>
+              <td>Подставляются значения переменных; их порядок и синтаксис должны сохраняться.</td>
+              <td><code>You found %d gold.</code></td>
+            </tr>
+            <tr>
+              <td>HTML-подобные теги и разметку</td>
+              <td>Используется игровым UI для цвета, переносов, иконок.</td>
+              <td><code>&lt;br&gt;</code>, <code>&lt;img src=...&gt;</code></td>
+            </tr>
+            <tr>
+              <td>Пути к файлам и BSA/BA2</td>
+              <td>Файловая система и движок используют точные пути.</td>
+              <td><code>textures\weapons\sword.dds</code></td>
+            </tr>
+            <tr>
+              <td>FormID (hex-идентификаторы)</td>
+              <td>Уникальные идентификаторы записей.</td>
+              <td><code>0001A332</code></td>
+            </tr>
+            <tr>
+              <td>Ключевые слова (KYWD)</td>
+              <td>Могут использоваться в условиях и скриптах.</td>
+              <td><code>ArmorMaterialLeather</code></td>
+            </tr>
+            <tr>
+              <td>Звуковые имена голосов / VoiceTypes</td>
+              <td>Связаны с аудиофайлами и FuzMap.</td>
+              <td><code>FemaleEvenToned</code></td>
+            </tr>
+          </table>
+          <div class="faq-box">
+            <h3>Исключения</h3>
+            <p>Некоторые строки внутри VMAD или PEX <em>можно</em> переводить, но только если вы уверены, что они являются <em>чисто текстовыми</em> и не используются как имена/идентификаторы. Всегда проверяйте такой перевод в игре.</p>
+          </div>
+        </section>
+
+        <section id="checklist">
+          <h2>✅ Чек-лист перед публикацией перевода</h2>
+          <ol>
+            <li><strong>Нет красных строк.</strong> Все строки либо переведены, либо явно помечены как не требующие перевода (<kbd>F3</kbd>).</li>
+            <li><strong>Нет жёлтых предупреждений Alias.</strong> Все теги <code>&lt;Alias&gt;</code> в оригинале и переводе совпадают.</li>
+            <li><strong>Сохранены форматы.</strong> Проверьте <code>%s</code>, <code>%d</code>, числа, скобки, квадратные/фигурные теги.</li>
+            <li><strong>Кодировка корректна.</strong> Skyrim SE / Starfield — UTF-8; Skyrim LE / FNV — cp1251 (или настроенная в игре).</li>
+            <li><strong>Длина строк UI.</strong> Названия предметов, кнопок и подсказок не вылезают за границы интерфейса.</li>
+            <li><strong>VMAD проверен.</strong> Если переводились скриптовые свойства — протестированы в игре.</li>
+            <li><strong>Нет случайных переводов EDID и имён скриптов.</strong> Используйте фильтр / поиск по записям.</li>
+            <li><strong>Fuz-файлы и озвучка.</strong> Если переводите с озвучкой — проверьте привязку аудио (FuzMap).</li>
+            <li><strong>Сохранён словарь.</strong> Словарь SST/кэш сохранён, чтобы в будущем обновлять перевод между версиями мода.</li>
+            <li><strong>Тест в игре.</strong> Запущена «чистая» установка с переводом минимум 15–30 минут: диалоги, меню, журнал, предметы.</li>
+            <li><strong>Финализация корректна.</strong> Файлы экспортированы в правильную папку (обычно <code>Data</code> или отдельную папку для архива мода).</li>
+            <li><strong>Указаны авторы и кредиты.</strong> В описании перевода указан автор оригинального мода, автор перевода и инструмент xTranslator.</li>
+          </ol>
+          <div class="ok-box">
+            <strong>Помните:</strong> качественный перевод проверяется не только количеством строк, но и стабильностью в игре. Лучше потратить лишний час на тестирование, чем выпускать «сломанный» мод.
+          </div>
+        </section>
+      </main>
+    </div>
+  </section>
+
+  <section id="hotkeys" class="tab-panel">
+    <div class="page-wrap">
+      <nav class="page-toc sticky">
+        <h2>📑 Оглавление</h2>
+        <ul>
+          <li><a href="#hotkeys-table">Горячие клавиши</a></li>
+          <li><a href="#tips">Полезные приёмы</a></li>
+        </ul>
+      </nav>
+
+      <main>
+        <section id="hotkeys-table">
+          <h2>⌨️ Горячие клавиши</h2>
+          <table>
+            <tr><th>Клавиша</th><th>Действие (название пункта меню в программе)</th></tr>
+            <tr><td><kbd>F1</kbd></td><td><strong>Подтвердить полный перевод</strong> (<code>Menu_Validate</code>) — отметить строку как полностью переведённую (синий флаг).</td></tr>
+            <tr><td><kbd>F2</kbd></td><td><strong>Подтвердить частичный перевод</strong> — отметить строку как частично переведённую / «работа в процессе» (фиолетовый флаг).</td></tr>
+            <tr><td><kbd>F3</kbd></td><td><strong>Подтвердить как «Перевод не требуется»</strong> (<code>Menu_Locked</code>) — пометить строку, которую переводить не нужно.</td></tr>
+            <tr><td><kbd>F4</kbd></td><td><strong>Отменить перевод</strong> — сбросить строку в «не переведено» и удалить перевод (красный флаг).</td></tr>
+            <tr><td><kbd>F8</kbd></td><td>Поиск только в словаре текущего мода.</td></tr>
+            <tr><td><kbd>F9</kbd></td><td><strong>Задать TAG/ID</strong> (<code>FormColabId</code>) для выбранных строк — метка совместной работы над переводом.</td></tr>
+            <tr><td><kbd>F11</kbd></td><td>Воспроизведение связанного fuz-аудио.</td></tr>
+            <tr><td><kbd>F12</kbd></td><td>Быстрый фильтр / снятие фильтра по текущей записи (FormID filter).</td></tr>
+            <tr><td><kbd>Ctrl</kbd>+<kbd>T</kbd></td><td><strong>Прямой перевод</strong> (<code>Trans_Exact</code>) — автоперевод строк с точным совпадением из словаря.</td></tr>
+            <tr><td><kbd>Ctrl</kbd>+<kbd>H</kbd></td><td><strong>Эвристический перевод (текущий список)</strong> (<code>Heuristic</code>) — подбор похожих строк.</td></tr>
+            <tr><td><kbd>Ctrl</kbd>+<kbd>R</kbd></td><td><strong>QuickTrans</strong> — быстрый строгий автоперевод выделенных строк (совпадение по EDID + string).</td></tr>
+            <tr><td><kbd>Ctrl</kbd>+<kbd>S</kbd></td><td><strong>Сохранить словарь SST</strong> (<code>Save_SST</code>) — запись пользовательского словаря.</td></tr>
+            <tr><td><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>S</kbd></td><td><strong>Финализировать Esp/Esm</strong> (<code>Menu_FinalizeEsp</code>) — экспорт / финализация текущего файла.</td></tr>
+            <tr><td><kbd>Ctrl</kbd>+<kbd>Tab</kbd> / <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Tab</kbd></td><td>Переключение между открытыми файлами.</td></tr>
+            <tr><td><kbd>Ctrl</kbd>+<kbd>↑</kbd> / <kbd>Ctrl</kbd>+<kbd>↓</kbd></td><td>Навигация по записям вверх/вниз.</td></tr>
+            <tr><td><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>F12</kbd></td><td>Быстрый аудит памяти / переключение на ускоренный редактор (зависит от версии).</td></tr>
+            <tr><td><kbd>Shift</kbd>+<kbd>F12</kbd></td><td><strong>Вычисление производных строк</strong> (<code>DerivedStringsGen</code>).</td></tr>
+            <tr><td><kbd>Ctrl</kbd>+<kbd>D</kbd></td><td><strong>Добавить заголовок</strong> (<code>Menu_AddHeader</code>) — быстрое добавление/изменение заголовков (DefUI / сортировочные теги).</td></tr>
+            <tr><td><kbd>Ctrl</kbd>+<kbd>N</kbd></td><td>Quick Numeric Regex Replace — автозамена чисел из оригинала в перевод.</td></tr>
+            <tr><td><kbd>Ctrl</kbd>+<kbd>C</kbd> / <kbd>Ctrl</kbd>+<kbd>V</kbd></td><td>Копирование/вставка текста в списке записей/диалогов.</td></tr>
+            <tr><td><kbd>Ctrl</kbd>+<kbd>Z</kbd></td><td><strong>Отменить</strong> (<code>Undo</code>) — отмена прямых операций (кроме глобальных: Сравнить ESP, Сброс, Добавить ID).</td></tr>
+            <tr><td><kbd>Esc</kbd></td><td>Прерывание загрузки больших esm/esp или длительных операций.</td></tr>
+          </table>
+          <p class="text-muted">Точный набор клавиш может незначительно отличаться в зависимости от версии xTranslator; уточняйте во всплывающих подсказках и меню программы.</p>
+        </section>
+
+        <section id="tips">
+          <h2>💡 Полезные приёмы</h2>
+          <ul>
+            <li><strong>Фильтры предупреждений.</strong> Щелчок правой кнопкой по кнопке фильтра открывает список конкретных типов предупреждений (Alias, VMAD, кодировка и др.).</li>
+            <li><strong>Фильтр по записи.</strong> <kbd>F12</kbd> изолирует все строки текущей записи FormID — удобно, когда в одной записи много строк.</li>
+            <li><strong>Drag &amp; Drop.</strong> Можно перетаскивать несколько файлов одновременно в окно xTranslator, в том числе XML для импорта.</li>
+            <li><strong>Поиск в словаре мода.</strong> <kbd>F8</kbd> ограничивает поиск только текущим модом, не трогая глобальный кэш.</li>
+            <li><strong>Загрузить все основные модули.</strong> Если мод ссылается на основные модули (мастер-файлы), загрузите их все — это улучшит распознавание ключевых слов, карты NPC (NPCMap) и FuzMap.</li>
+            <li><strong>Разные рабочие пространства.</strong> Можно открыть мод из одной игры в рабочем пространстве другой (например, Skyrim в SkyrimSE), но вручную укажите кодировку.</li>
+            <li><strong>Автосохранение.</strong> Включите в настройках — резервные копии словарей сохраняются в <code>_xTranslator\UserDictionaries\[Game]\Auto\</code>.</li>
+          </ul>
+        </section>
+      </main>
+    </div>
+  </section>
+
+  <section id="faq" class="tab-panel">
+    <div class="page-wrap">
+      <nav class="page-toc sticky">
+        <h2>📑 Оглавление</h2>
+        <ul>
+          <li><a href="#faq-about">О разделе</a></li>
+          <li><a href="#faq-questions">Частые вопросы</a></li>
+          <li><a href="#nexus">Оригиналы на Nexus</a></li>
+        </ul>
+      </nav>
+
+      <main>
+        <section id="faq-about">
+          <h2>❓ FAQ</h2>
+          <p class="lead">Короткие ответы на частые вопросы по xTranslator. Пошаговые руководства — построение словаря, прямой и эвристический перевод, VMAD, RegEx, обработка заголовков, пакетная обработка, орфография и карта NPC — собраны в <a href="#tutorial">туториале</a>.</p>
+          <p class="text-muted">Официальные статьи и исходные иллюстрации — в разделе <a href="#nexus">«Оригиналы на Nexus»</a> внизу страницы.</p>
+        </section>
+
+        <section id="faq-questions">
+          <h2>💬 Частые вопросы</h2>
+
+          <h3>С чего начать?</h3>
+          <p>Выберите рабочее пространство игры, настройте языки и постройте словарь, затем откройте мод и переведите строки прямым переводом. Пошаговый порядок действий — в разделе <a href="#workflow">«Типовой рабочий процесс»</a> туториала; первый шаг с созданием словаря — в разделе <a href="#build-cache">«Построение словаря»</a>.</p>
+
+          <h3>Нужен ли xEdit, если есть xTranslator?</h3>
+          <p>Да, для многих задач. xTranslator не делает delocalize/localize: он не извлекает строки из плагина в <code>.strings</code> и не вставляет их обратно. Если мод локализован (строки лежат в <code>.strings</code>/<code>.dlstrings</code>/<code>.ilstrings</code>), переводите эти файлы. Если строки встроены в <code>.esp</code>, xTranslator открывает плагин напрямую, но сложные операции с записями удобнее делать в xEdit.</p>
+
+          <h3>Почему не все строки переводятся автоматически?</h3>
+          <p>Автоперевод работает только по совпадениям в подключённых словарях и кэше: если строки там нет, она остаётся непереведённой. Что делать по порядку — в разделе <a href="#translation">«Прямой, эвристический и машинный перевод»</a>.</p>
+
+          <h3>Чем отличаются кэш, SST и пользовательский словарь?</h3>
+          <p><strong>Кэш</strong> — автоматически накопленные переводы, которые подгружаются при открытии модов. <strong>SST</strong> — файл словаря xTranslator, который можно сохранить и передать другому переводчику. <strong>Пользовательский словарь</strong> (<code>Custom_Dic</code>) — ваш личный набор терминов и правок. Управление словарями и резервные копии описаны в разделе <a href="#build-cache">«Построение словаря»</a>.</p>
+
+          <h3>Что означают цвета строк?</h3>
+          <p>Цвет — это флаг состояния перевода: белый, синий, фиолетовый, зелёный, красный и жёлтый. Расшифровка — в разделе <a href="#flags">«Флаги строк»</a>.</p>
+
+          <h3>Как обновить перевод после обновления мода?</h3>
+          <p>Через «Сравнить ESP» (<code>Esp_Compare</code>) и панель «Сравнение результатов ESP» (<code>EspCompRes</code>). Порядок действий и обработка предупреждений — в разделе <a href="#esp-compare">«Сравнить ESP»</a>.</p>
+
+          <h3>Как перенести перевод в другую версию или игру?</h3>
+          <p>Сохраните словарь SST и пользовательский словарь, затем подключите их в нужном рабочем пространстве. Для массового переноса удобны объединение словарей (<code>Hint_mergeSST</code>) и сортировка (<code>Hint_SortSST</code>). Учтите различия кодировок: Skyrim SE и Starfield используют UTF-8, Skyrim LE и Fallout: New Vegas — cp1251 (или кодировку, настроенную в игре).</p>
+
+          <h3>Почему вместо русского текста появляются «кракозябры»?</h3>
+          <p>Почти всегда это неверная кодировка. Проверьте «Настроить языки» и при необходимости включите «Принудительно задать кодировку» (<code>forceCp</code>) для загрузки или сохранения. Для Skyrim SE, Fallout 4/76 и Starfield обычно нужен UTF-8; для старых игр — cp1251/cp1252.</p>
+
+          <h3>Как переводить озвученные диалоги?</h3>
+          <p>xTranslator связывает строки с аудио через FuzMap и карту NPC. Подробнее — в разделе <a href="#npc">«Карта NPC и FUZ»</a>.</p>
+
+          <h3>Можно ли переводить VMAD?</h3>
+          <p>Можно, но очень осторожно: VMAD — это скриптовые свойства записи, и ошибка в них ломает мод. Полный порядок работы и предупреждения — в разделе <a href="#vmad">«VMAD — скриптовые свойства»</a>.</p>
+
+          <h3>Как переводить MCM?</h3>
+          <p>Откройте режим «MCM/Перевод» (<code>Load_MCMmenu</code>) и работайте с меню настройки мода как с обычными строками. Не переводите имена переменных и идентификаторы — только подписи, описания и подсказки. Описание режима — в разделе <a href="#modes">«Режимы редактирования»</a>.</p>
+
+          <h3>Как переводить скрипты PEX?</h3>
+          <p>Скомпилированные скрипты <code>.pex</code> декомпилируются (например, Champollion), затем строки переводятся, а скрипт компилируется обратно. Редактор PEX в xTranslator позволяет просматривать и править строки, но итоговую сборку скриптов лучше проверять отдельно. Подробнее о режиме — в разделе <a href="#modes">«Режимы редактирования»</a>.</p>
+
+          <h3>Почему xTranslator не сохраняет esp/esm?</h3>
+          <p>Потому что он не предназначен для прямой локализации плагинов. Сохраняйте перевод в словарь и файлы строк, а встраивание в плагин выполняйте через xEdit или штатный механизм локализации игры. Для завершения работы используйте «Финализировать Esp/Esm» (<code>Menu_FinalizeEsp</code>).</p>
+
+          <h3>Как работать над переводом командой?</h3>
+          <p>Используйте метки «Задать TAG/ID» (<kbd>F9</kbd>, <code>FormColabId</code>): они показывают, кто и какую строку взял. Совместные словари и SST-файлы позволяют обмениваться наработками. Договоритесь о единых терминах заранее — это дешевле, чем править сотни строк потом.</p>
+
+          <h3>Как проверить орфографию?</h3>
+          <p>Включите проверку орфографии в настройках и выберите движок: MS Word или Hunspell. Фильтр «строки с ошибкой проверки орфографии» (<code>Hint_SearchSp2</code>) покажет проблемные переводы. Подробнее — в разделе <a href="#spellcheck">«Проверка орфографии»</a>.</p>
+
+          <h3>Как настроить машинный перевод через API?</h3>
+          <p>Откройте «Настройка API перевода» (<code>Options → TranslationApi</code>) и укажите провайдера и ключ: DeepL, Google, Microsoft (Azure/Bing), OpenAI-совместимые сервисы, LM Studio или Ollama. API переводит выделенный фрагмент в поле перевода, а если выделения нет — исходную строку. Список эндпоинтов и настройка — в разделе <a href="#api">«Настройка API перевода»</a>.</p>
+
+          <h3>Что такое Lookup Fail?</h3>
+          <p>Ошибка, когда игра не может найти строку по StringID. Обычно причина — рассинхронизация файлов строк и плагина после обновления. xTranslator может автоматически исправлять placeholder; если ошибка остаётся, проверьте соответствие версий <code>.esp</code> и <code>.strings</code>.</p>
+
+          <h3>Как переводить сортировщики предметов и теги DefUI?</h3>
+          <p>Через «Обработку заголовков» (<code>HeaderProcessor</code>) и правила <code>rules.txt</code>. Инструмент умеет добавлять заголовки по EDID/KEYWORD, поддерживает <code>%s</code> и регулярные выражения. Подробнее — в разделе <a href="#headers">«Обработка заголовков (DefUI)»</a>.</p>
+
+          <h3>Как переводить NewDialog / Full Dialog Interface?</h3>
+          <p>Инструментом «Старый стиль диалогового окна» (<code>OldDialogStyle</code>). Он собирает строки DNAM из основных модулей и формирует файлы строк в нужном формате. Подробнее — в разделе <a href="#olddialog">«Старый стиль диалогового окна»</a>.</p>
+
+          <h3>Как переводить Starfield?</h3>
+          <p>Выберите рабочее пространство Starfield, работайте с файлами строк и архивами BA2, используйте UTF-8. Для извлечения и упаковки ресурсов применяйте профильные инструменты (например, Archive2 / BA2-утилиты). Словари Starfield подключаются отдельно от словарей Skyrim и Fallout.</p>
+
+          <h3>Где брать готовые словари?</h3>
+          <p>В папке <code>UserDictionaries\[Игра]</code>, в кэше xTranslator и в сообществе (Nexus Mods, тематические Discord-серверы). Помните: чужие словари — это черновик. Терминологию и стиль всё равно нужно вычитывать под свой перевод.</p>
+        </section>
+
+        <section id="nexus">
+          <h2>🌐 Справочно: оригиналы на Nexus Mods</h2>
+          <p>Раздел собран по материалам официальной документации xTranslator и статей Nexus. Если хотите сверить детали или посмотреть исходные иллюстрации — воспользуйтесь ссылками ниже.</p>
+          <div class="faq-box">
+            <h3>FAQ и руководства</h3>
+            <ul>
+              <li><a href="http://www.nexusmods.com/fallout4/articles/35/">FAQ по xTranslator</a></li>
+              <li><a href="http://www.nexusmods.com/skyrimspecialedition/articles/50/">Быстрое обновление старой установки переводчика</a></li>
+              <li><a href="http://www.nexusmods.com/fallout4/articles/23/">Кэш словарей и первые шаги</a></li>
+              <li><a href="http://www.nexusmods.com/skyrimspecialedition/articles/176/">Редактирование похожих строк (эвристика)</a></li>
+              <li><a href="http://www.nexusmods.com/skyrimspecialedition/articles/32/">Конвертация кодировок esp/strings</a></li>
+              <li><a href="http://www.nexusmods.com/skyrimspecialedition/articles/507/">Редактирование VMAD (скриптовые свойства)</a></li>
+              <li><a href="http://www.nexusmods.com/skyrimspecialedition/articles/5/">espCompare — обновление перевода между версиями</a></li>
+              <li><a href="http://www.nexusmods.com/fallout4/articles/88/">Создание продвинутых словарей и использование внутренних FormID</a></li>
+              <li><a href="http://www.nexusmods.com/fallout4/articles/447/">AddHeader / теги DefUI / обработка заголовков</a></li>
+              <li><a href="http://www.nexusmods.com/fallout4/articles/41/">Перевод сортировщиков предметов с помощью RegEx</a></li>
+              <li><a href="http://www.nexusmods.com/fallout4/articles/199/">Использование RegEx</a></li>
+              <li><a href="http://www.nexusmods.com/skyrimspecialedition/articles/78/">Импорт карты NPC из xEdit</a></li>
+              <li><a href="http://www.nexusmods.com/fallout4/articles/255/">Проверка орфографии (Hunspell)</a></li>
+              <li><a href="http://www.nexusmods.com/fallout4/articles/11/">OldDialogStyle / NewDialog</a></li>
+              <li><a href="http://www.nexusmods.com/fallout4/articles/89/">Сравнение .strings-файлов</a></li>
+            </ul>
+          </div>
+          <p class="text-muted">Ссылки ведут на внешний сайт и могут требовать входа в аккаунт Nexus Mods.</p>
+        </section>
+      </main>
+    </div>
+  </section>
+
+</div>
+
+<footer class="site-footer">
+  <div class="container">
+    <p>Единая версия мануала xTranslator — все разделы на одной странице.</p>
+    <p>Автор программы: mcguffin (Nexus Mods) · Адаптация: vQooQv · Оформление справки: собрано сообществом</p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var docEl = document.documentElement;
+  docEl.className = docEl.className ? docEl.className + ' js-tabs' : 'js-tabs';
+
+  var allSections = document.getElementsByTagName('section');
+  var panels = [];
+  var i;
+
+  for (i = 0; i < allSections.length; i++) {
+    if ((' ' + allSections[i].className + ' ').indexOf(' tab-panel ') > -1) {
+      panels.push(allSections[i]);
+    }
+  }
+
+  var nav = document.getElementById('tabs');
+  var links = nav ? nav.getElementsByTagName('a') : [];
+
+  function panelById(id) {
+    for (var j = 0; j < panels.length; j++) {
+      if (panels[j].id === id) return panels[j];
+    }
+    return null;
+  }
+
+  function panelOf(el) {
+    while (el && el !== document.body) {
+      if (el.nodeType === 1 && (' ' + el.className + ' ').indexOf(' tab-panel ') > -1) {
+        return el;
+      }
+      el = el.parentNode;
+    }
+    return null;
+  }
+
+  function stripActive(cls) {
+    return (' ' + cls + ' ').replace(/\s+active\s+/g, ' ').replace(/\s+/g, ' ').replace(/^ | $/g, '');
+  }
+
+  function setActive(panel) {
+    for (var j = 0; j < panels.length; j++) {
+      panels[j].className = stripActive(panels[j].className);
+      if (panels[j] === panel) panels[j].className += ' active';
+    }
+    for (var k = 0; k < links.length; k++) {
+      var href = links[k].getAttribute('href') || '';
+      links[k].className = stripActive(links[k].className);
+      if (href === '#' + panel.id) {
+        links[k].className += ' active';
+        links[k].setAttribute('aria-current', 'true');
+      } else if (links[k].removeAttribute) {
+        links[k].removeAttribute('aria-current');
+      }
+    }
+  }
+
+  function update() {
+    var hash = location.hash || '#home';
+    var id = hash.replace(/^#/, '');
+    var target = document.getElementById(id);
+    var panel = (target && panelOf(target)) || panelById('home');
+    if (!panel) return;
+    setActive(panel);
+    if (target && target !== panel) {
+      target.scrollIntoView();
+    } else {
+      window.scrollTo(0, 0);
+    }
+  }
+
+  if (window.addEventListener) {
+    window.addEventListener('hashchange', update, false);
+  } else if (window.attachEvent) {
+    window.attachEvent('onhashchange', update);
+  }
+
+  update();
+})();
+</script>
+</body>
+</html>
